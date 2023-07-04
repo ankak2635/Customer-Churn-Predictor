@@ -1,0 +1,1 @@
+The repo contains an end to end ML project which predicts customer churn rate.
