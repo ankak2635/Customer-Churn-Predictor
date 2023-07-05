@@ -1,0 +1,10 @@
+Models to be used:
+
+1. AdaboostBoostClassifier
+2. XGBClassifier
+3. LogisticRegression
+4. svm
+5. GradientBoostingClassifier
+6. RandomForest
+7. Naive Bayes
+8. k-Nearest Neighbor
