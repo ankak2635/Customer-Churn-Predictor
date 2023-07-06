@@ -9,3 +9,7 @@ Models to be used:
 7. Naive Bayes
 8. k-Nearest Neighbor
 
+Best model parameters:
+Random Forest
+{'max_depth': 50, 'max_samples': 1000, 'n_estimators': 100}
+
