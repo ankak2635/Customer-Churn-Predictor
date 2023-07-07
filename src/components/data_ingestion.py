@@ -5,6 +5,7 @@ from src.logger import logging
 from src.exception import CustomException
 
 from src.components.data_transformation import data_transformation, data_transform_config
+from src.components.model_trainer import model_trainer_config, model_trainer
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -12,8 +13,6 @@ from sklearn.model_selection import train_test_split
 @dataclass
 class data_ingestion_config:
     raw_data_path:str = os.path.join('artifacts', 'raw_data.csv')
-    # train_data_path:str = os.path.join('artifacts', 'train_data.csv')
-    # test_data_path:str = os.path.join('artifacts', 'test_data.csv')
 
 class data_ingestion:
     def __init__(self):
@@ -44,13 +43,23 @@ class data_ingestion:
             
 
 if __name__=="__main__":
+    # call data ingestion
     obj = data_ingestion()
     raw_data_path = obj.initiate_data_ingestion()
 
+    # call data transformation
     data_tranformation = data_transformation()
     _,X,y = data_tranformation.initiate_data_transformation(raw_data_path)
-    print(type(X), type(y))
-    print(X.shape, y.shape)
+    print("Shape of features and target:", X.shape, y.shape)
+
+    # call model trainer
+    model_trainer = model_trainer()
+    acc, recall, train_acc = model_trainer.initiate_model_trainer(X, y)
+    print("Train Accuracy Score:", train_acc)
+    print("Test Accuracy Score:", acc)
+    print("Test Recall Score:", recall)
+
+
 
 
 

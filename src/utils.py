@@ -1,6 +1,7 @@
 import sys
 import os
 from src.logger import logging
+from src.exception import CustomException
 
 
 import pickle
@@ -18,5 +19,5 @@ def save_as_pickle(file_path, obj):
         # Save as pickle file
         with open (file_path, "wb") as obj_file:
             pickle.dump(obj, obj_file)
-    except:
-        pass
+    except Exception as e:
+        raise CustomException(e,sys)
