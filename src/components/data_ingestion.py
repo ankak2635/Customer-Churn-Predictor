@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from src.logger import logging
 from src.exception import CustomException
 
+from src.components.data_transformation import data_transformation, data_transform_config
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -27,18 +29,12 @@ class data_ingestion:
             # drop unnecessary cols as observed in the notebook
             df.drop(columns=df.columns[:9], inplace=True, axis=1)
             df.drop(columns=['Churn Reason', 'Churn Label', 'Gender','Total Charges'], inplace= True, axis= 1)
-            logging.info("Dropped unnecessary columns")
+            logging.info("Dropped unnecessary columns i.e. filtered data")
 
             # make directory and save the df
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path, header=True, index=False)
             logging.info("Data ingestion complete")
-
-            # data transformation
-                # 1. treat the imbalance 
-                # 2. separate X and y
-                # 3. get cat and num cols
-                # 4. transformation pipeline 
 
             return self.ingestion_config.raw_data_path
 
@@ -47,8 +43,15 @@ class data_ingestion:
             raise CustomException(e,sys)
             
 
-# if __name__=="__main__":
-#     obj = data_ingestion()
-#     obj.initiate_data_ingestion()
+if __name__=="__main__":
+    obj = data_ingestion()
+    raw_data_path = obj.initiate_data_ingestion()
+
+    data_tranformation = data_transformation()
+    _,X,y = data_tranformation.initiate_data_transformation(raw_data_path)
+    print(type(X), type(y))
+    print(X.shape, y.shape)
+
+
 
     

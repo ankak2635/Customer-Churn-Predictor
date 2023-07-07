@@ -1,0 +1,23 @@
+Models to be used:
+
+1. AdaboostBoostClassifier
+2. XGBClassifier
+3. LogisticRegression
+4. svm
+5. GradientBoostingClassifier
+6. RandomForest
+7. Naive Bayes
+8. k-Nearest Neighbor
+
+Best model parameters:
+Random Forest
+{'max_depth': 50, 'max_samples': 1000, 'n_estimators': 100}
+
+Preprocesor:
+        # Data transformation steps
+            # 1. treat the imbalance 
+            # 2. separate X and y
+            # 3. get cat and num cols
+            # 4. transformation pipeline 
+            # 5. save preprocessor object as pickle file
+            # 6. return preprocessor object, transformed X, y
