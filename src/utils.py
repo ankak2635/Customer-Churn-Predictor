@@ -21,3 +21,13 @@ def save_as_pickle(file_path, obj):
             pickle.dump(obj, obj_file)
     except Exception as e:
         raise CustomException(e,sys)
+    
+# Function which loads a pickle file
+def load_pickle(file_path):
+    try:
+        with open(file_path,"rb") as obj_file:
+            return pickle.load(obj_file)
+
+    except Exception as e:
+        raise CustomException(e,sys)
+        

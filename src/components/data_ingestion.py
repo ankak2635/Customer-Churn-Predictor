@@ -30,6 +30,9 @@ class data_ingestion:
             df.drop(columns=['Churn Reason', 'Churn Label', 'Gender','Total Charges'], inplace= True, axis= 1)
             logging.info("Dropped unnecessary columns i.e. filtered data")
 
+            # clean column names (remove spaces between the col names)
+            df.columns = df.columns.str.replace(' ', '')
+
             # make directory and save the df
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path, header=True, index=False)
@@ -59,8 +62,3 @@ if __name__=="__main__":
     print("Test Accuracy Score:", acc)
     print("Test Recall Score:", recall)
 
-
-
-
-
-    

@@ -35,7 +35,7 @@ class data_transformation:
 
             # extract catagorical and numerical features 
             cat_features = [i for i in filtered_df.columns if filtered_df[i].dtype == 'object']
-            num_cols = ['Tenure Months', 'Monthly Charges', 'CLTV',  'Churn Score']
+            num_cols = ['TenureMonths', 'MonthlyCharges', 'CLTV',  'ChurnScore']
             logging.info("Got numerical and catagorical cols")
 
             # define column transformer
@@ -71,8 +71,8 @@ class data_transformation:
 
             # treat the imbalance in the target variable
             # make two seperate dfs for churned and not churned
-            churned = filtered_df[filtered_df['Churn Value']==1]
-            not_churned = filtered_df[filtered_df['Churn Value'] == 0] 
+            churned = filtered_df[filtered_df['ChurnValue']==1]
+            not_churned = filtered_df[filtered_df['ChurnValue'] == 0] 
 
             # upsample the churned df
             churned_upsampled = resample(churned, 
@@ -85,8 +85,8 @@ class data_transformation:
             logging.info("Target imbalance treated")
 
             # Separate X and y
-            X = combined_df.drop(columns=['Churn Value'], axis= 1)
-            y = combined_df['Churn Value']
+            X = combined_df.drop(columns=['ChurnValue'], axis= 1)
+            y = combined_df['ChurnValue']
             logging.info("X and y separated")
 
 
