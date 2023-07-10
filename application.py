@@ -52,7 +52,6 @@ def predict_data():
             result =  "The customer will not churn!"
         
         logging.info('Made prediction')
-        print(result)
 
         return render_template('home.html', results = result)
 
@@ -60,4 +59,4 @@ def predict_data():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run()
