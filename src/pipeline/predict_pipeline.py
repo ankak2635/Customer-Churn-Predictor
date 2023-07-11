@@ -19,7 +19,7 @@ class PredictPipeline:
             preprocessor = load_pickle(preprocessor_path)
             model =load_pickle(model_path)
 
-            # Preprocess the user imput data
+            # Preprocess the user input data
             processed_data = preprocessor.transform(features)
 
             # make prediction
