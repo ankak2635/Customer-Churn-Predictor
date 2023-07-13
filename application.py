@@ -4,25 +4,19 @@ from src.logger import logging
  
 application = Flask(__name__)
 
-app = application
+# Route for webpage
 
-# # Route for homepage
-# logging.info('Entered the application')
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
-
-@app.route('/',methods=['GET','POST'])
+@application.route('/',methods=['GET','POST'])
 
 def predict_data():
     if request.method=='GET':
-        return render_template('home.html')
+        return render_template('index.html')
     else:
         data = CustomData(
                  SeniorCitizen = request.form.get('SeniorCitizen'),
                  Partner = request.form.get('Partner'),
                  Dependents = request.form.get('Dependents'), 
-                 TenureMonths = request.form.get('TenureMonths'),
+                 TenureMonths = '11' if request.form.get('TenureMonths') == '' else request.form.get('TenureMonths'),
                  PhoneService = request.form.get('PhoneService'),
                  MultipleLines = request.form.get('MultipleLines'),
                  InternetService = request.form.get('InternetService'),
@@ -35,10 +29,10 @@ def predict_data():
                  Contract = request.form.get('Contract'),
                  PaperlessBilling = request.form.get('PaperlessBilling'),
                  PaymentMethod = request.form.get('PaymentMethod'),
-                 MonthlyCharges = request.form.get('MonthlyCharges'),
-                 ChurnScore = request.form.get('ChurnScore'),
-                 CLTV = request.form.get('CLTV')
-        )
+                 MonthlyCharges = '100' if request.form.get('MonthlyCharges') == '' else request.form.get('MonthlyCharges'),
+                 ChurnScore = '50' if request.form.get('ChurnScore') == '' else request.form.get('ChurnScore'),
+                 CLTV = '2635' if request.form.get('CLTV') == '' else request.form.get('CLTV')
+                )
 
         pred_df = data.get_as_dataframe()
         logging.info('Got user input as dataframe')
@@ -53,10 +47,8 @@ def predict_data():
         
         logging.info('Made prediction')
 
-        return render_template('home.html', results = result)
-
-
+        return render_template('index.html', results = result)
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    application.run()
