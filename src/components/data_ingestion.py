@@ -22,7 +22,7 @@ class data_ingestion:
         logging.info("Data ingestion initiated")
         try:
             # read the data
-            df = pd.read_csv('notebook\churn_df.csv')
+            df = pd.read_csv('notebook/churn_df.csv')
             logging.info("Read the data as dataframe")
 
             # drop unnecessary cols as observed in the notebook
