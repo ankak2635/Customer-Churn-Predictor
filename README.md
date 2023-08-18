@@ -1,25 +1,51 @@
-A machine learning **web application** created using python and hosted on AWS elastic beanstalk to predict whether the company's customer will churn (leave the company) or not.
+# Customer Churn Prediction Web Application
 
-🔗 [Checkout the hosted web application](http://customer-churn-predictor-env.eba-8imya9zv.ap-south-1.elasticbeanstalk.com/) 
+Welcome to the Customer Churn Prediction Web Application project repository! This machine learning application, developed using Python, is hosted on AWS Elastic Beanstalk. Its primary objective is to predict whether a company's customers are likely to churn (leave the company) or remain as active customers.
 
-The bussiness logic of the use case have been kept in mind throughout the project i.e. the idea is that we have to focus on customer retention. Therefore, along with the accuracy score huge consederation is given to the recall score to minimize false negatives predictions. 
+🔗 **Check out the hosted web application [here](http://customer-churn-predictor-env.eba-8imya9zv.ap-south-1.elasticbeanstalk.com/).**
 
-**Dataset:** [Telco customer churn: IBM dataset](https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset) 
+## Business Logic and Focus
 
-**ML Steps**
-1. **EDA** using pandas and effective visualisation.
-2. **Feature Selection** by checking impact of each variable on the target variable.
-3. Target impbalance variable has been treated using **upsampling** technique to avoid data loss.
-4. Numeric variable have been scaled and catagorical ones are enocoded using a **preprocessing pipeline.**
-5. Compared 8 classification model and fine-tuned the selected optimum models using **GridSearchCV** 
-6. The fine-tuned Random Forest model achieves an **accuracy score** of 95% and **recall score** of 98%, respectively
+Throughout the project, I have prioritized the business logic associated with customer retention. While achieving high accuracy is important, I have placed significant emphasis on the recall score to minimize false negative predictions.
 
-**Deployment Steps**
-1. **Goes modular** to define each tasks
-2. Create basics - logger, exception, requirements and code setup
-3. **Data ingestion** reads the data and performs data cleaning, return cleaned dataset
-4. **Data transformation** upsamples, separates X and y, transforms X; returns pre-processing pipeline as a pickle file
-5. **Model trainer** splits the data into train-test sets, trains, predicts and returns accuracy and recall scores, returns model as a pickle file
-6. **Flask Application** routes to the website hosted on AWS and takes new data 
-7. **Predict pipline** feeds the new data to the preprocessor, model and makes prediction
-8. **Deployed** the project on AWS beanstalk  
+## Dataset
+
+The dataset used for this project is the "Telco Customer Churn" dataset from IBM.
+
+## Machine Learning Workflow
+
+The machine learning workflow comprises the following steps:
+
+1. **Exploratory Data Analysis (EDA)**: Employing pandas and effective visualizations to gain insights from the dataset.
+
+2. **Feature Selection**: Evaluating the impact of each variable on the target variable to determine the most relevant features.
+
+3. **Addressing Target Imbalance**: Upsampling technique has been applied to treat the imbalanced target variable and prevent data loss.
+
+4. **Data Preprocessing**: Numeric variables are scaled, and categorical ones are encoded using a preprocessing pipeline.
+
+5. **Model Comparison and Selection**: Eight classification models are compared, and the optimal models are fine-tuned using GridSearchCV.
+
+6. **Model Performance**: The fine-tuned Random Forest model achieves an accuracy score of 95% and a remarkable recall score of 98%.
+
+## Deployment Steps
+
+The deployment process has been modularized into distinct tasks:
+
+1. **Data Ingestion**: Reads and cleans the data, providing a cleaned dataset.
+
+2. **Data Transformation**: Performs upsampling, separates features and target, and applies transformations. The preprocessing pipeline is saved as a pickle file.
+
+3. **Model Training**: Splits data into train-test sets, trains the model, and predicts outcomes. Accuracy and recall scores are returned, and the model is saved as a pickle file.
+
+4. **Flask Application**: Routes to the web interface hosted on AWS, allowing input of new data.
+
+5. **Prediction Pipeline**: Feeds new data to the preprocessor and model to make predictions.
+
+6. **Deployment**: The project has been successfully deployed on AWS Elastic Beanstalk.
+
+## Hosted Web Application Link
+
+For a hands-on experience with the Customer Churn Prediction Web Application, please visit the hosted web application [here](http://customer-churn-predictor-env.eba-8imya9zv.ap-south-1.elasticbeanstalk.com/).
+
+Thank you for your interest in our project!
